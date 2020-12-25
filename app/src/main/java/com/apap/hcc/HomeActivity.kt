@@ -1,7 +1,6 @@
 package com.apap.hcc
 
 import android.os.Bundle
-import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.apap.hcc.databinding.ActivityHomeBinding
@@ -23,7 +22,7 @@ class HomeActivity: FullscreenActivity() {
 
     private fun setupBinding() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_home)
     }
 
     private fun setupBottomNavigation() {
@@ -34,10 +33,6 @@ class HomeActivity: FullscreenActivity() {
     private fun setupListeners() {
         with(binding) {
             homeBottomNavigation.setOnNavigationItemSelectedListener {
-                binding.homeBottomNavigation.itemBackground = ContextCompat.getDrawable(
-                    this@HomeActivity,
-                    android.R.color.holo_orange_dark
-                )
 
                 when (it.itemId) {
                     R.id.home_fragment -> showTitle(getString(R.string.home_nav_text))
@@ -49,7 +44,7 @@ class HomeActivity: FullscreenActivity() {
         }
     }
 
-    private fun showTitle(text: String) {
-        binding.title.text = text
+    private fun showTitle(title: String) {
+        binding.title.text = title
     }
 }
